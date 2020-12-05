@@ -10,15 +10,14 @@ router.get("/", async (req, res) => {
         const pool = await poolPromise;
         const result = await pool
             .request()
-            .query('select * from "user"', function (err, userset) {
+            .query('select * from "user"', function (err, response) {
                 if (err) {
                     console.log(err);
                     return res.status(500).json({
                         message: "Some internal error happened",
                     });
                 }
-                let data = userset.recordset;
-                res.json(data);
+                res.response(200).json(response.recordset);
             });
     } catch (err) {
         res.status(500);
