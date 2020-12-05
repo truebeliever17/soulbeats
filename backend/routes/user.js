@@ -70,9 +70,29 @@ router.post(
                                                 "Some internal error happened",
                                         });
                                     }
-                                    res.status(200).json({
-                                        message: "User successfully added!",
-                                    });
+                                    const payload = response.recordset[0];
+                                    jwt.sign(
+                                        payload,
+                                        process.env.SECRET_KEY || "something",
+                                        {
+                                            expiresIn: "30d",
+                                        },
+                                        (err, token) => {
+                                            if (err) {
+                                                console.log(err);
+                                                return res.status(500).json({
+                                                    message:
+                                                        "Some internal error happened",
+                                                });
+                                            }
+                                            res.status(200).json({
+                                                token,
+                                                payload,
+                                                message:
+                                                    "User successfully added!",
+                                            });
+                                        }
+                                    );
                                 }
                             );
                         } else {
