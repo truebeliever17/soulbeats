@@ -157,4 +157,33 @@ router.post(
     }
 );
 
+router.get("/me", auth, async (req, res) => {
+    try {
+        const pool = await poolPromise;
+        const userId = req.user_id;
+        await pool
+            .request()
+            .query(
+                `exec finduserbyid @user_id = ${userId}`,
+                function (err, response) {
+                    if (err) {
+                        console.log(err);
+                        return res.status(500).json({
+                            message: "Some internal error happened",
+                        });
+                    }
+                    if (response.recordset.length == 0) {
+                        return res.status(400).json({
+                            message: "Token not found",
+                        });
+                    }
+                    res.status(200).json(response.recordset);
+                }
+            );
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send("Some internal error happened");
+    }
+});
+
 module.exports = router;
