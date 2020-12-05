@@ -1,23 +1,92 @@
-const express = require('express');
+const { query } = require("express");
+const express = require("express");
+const { check, validationResult } = require("express-validator/check");
 const router = express.Router();
-const {sql, poolPromise} = require("../connection/db");
-router.get('/', async (req, res) => {
+const { sql, poolPromise } = require("../connection/db");
+
+router.get("/", async (req, res) => {
     try {
         const pool = await poolPromise;
         const result = await pool
             .request()
-            .query('select * from "user"', function(err, userset) {
+            .query('select * from "user"', function (err, userset) {
                 if (err) {
                     console.log(err);
-                } else {
-                    let data = userset.recordset;
-                    res.json(data);
+                    return res.status(500).json({
+                        message: "Some internal error happened",
+                    });
                 }
+                let data = userset.recordset;
+                res.json(data);
             });
-    } catch(err) {
+    } catch (err) {
         res.status(500);
-        res.send(err.message);
+        console.log(err.message);
+        res.send("Some internal error happened");
     }
 });
+
+router.post(
+    "/signup",
+    [
+        check("username", "Please enter a valid username").not().isEmpty(),
+        check("display_name", "Please enter a valid name").not().isEmpty(),
+        check("email", "Please enter a valid email").isEmail(),
+        check("password", "Please enter a valid password").isLength({
+            min: 1,
+        }),
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array(),
+            });
+        }
+
+        const { username, display_name, email, password } = req.body;
+        try {
+            const pool = await poolPromise;
+            await pool
+                .request()
+                .query(
+                    `exec finduser @username='${username}', @email='${email}'`,
+                    function (err, queryRes) {
+                        if (err) {
+                            console.log(err);
+                            return res.status(500).json({
+                                message: "Some internal error happened",
+                            });
+                        }
+                        if (queryRes.recordset.length == 0) {
+                            pool.request().query(
+                                `exec registeruser @username='${username}', @display_name='${display_name}', @email='${email}', @password='${password}'`,
+                                function (err, response) {
+                                    if (err) {
+                                        console.log(err);
+                                        return res.status(500).json({
+                                            message:
+                                                "Some internal error happened",
+                                        });
+                                    }
+                                    res.status(200).json({
+                                        message: "User successfully added!",
+                                    });
+                                }
+                            );
+                        } else {
+                            return res.status(400).json({
+                                message: "Username or email is already taken",
+                            });
+                        }
+                    }
+                );
+        } catch (err) {
+            res.status(500);
+            console.log(err.message);
+            res.send("Some internal error happened");
+        }
+    }
+);
 
 module.exports = router;
