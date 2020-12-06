@@ -4,4 +4,5 @@
     <string name="search">Search</string>
     <string name="profile">Profile</string>
     <string name="albums">Albums</string>
+    <string name="album_cover">Album cover</string>
 </resources>
