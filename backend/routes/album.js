@@ -24,6 +24,29 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.post("/", async (req, res) => {
+    const { show_only_main_info } = req.body;
+    const query = show_only_main_info
+        ? `select album.image_id, album.album_name, "user".display_name from album join "user" on album.artist_id = "user".user_id where is_private = 0`
+        : `select * from album`;
+
+    try {
+        const pool = await poolPromise;
+        await pool.request().query(query, function (err, response) {
+            if (err) {
+                console.log(err);
+                return res.status(500).json({
+                    message: "Some internal error happened",
+                });
+            }
+            res.status(200).json(response.recordset);
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Some internal error happened" });
+    }
+});
+
 router.post(
     "/create",
     [
