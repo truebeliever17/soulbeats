@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.Album;
+import com.example.myapplication.models.AlbumMainInfo;
 import com.example.myapplication.network.NetworkService;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     private boolean isDetached;
-    private static List<Album> albums;
+    private static List<AlbumMainInfo> albums;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -41,16 +42,16 @@ public class HomeFragment extends Fragment {
         NetworkService
             .getInstance()
             .getJSONApi()
-            .getAllAlbums()
-            .enqueue(new Callback<List<Album>>() {
+            .getAlbumsWithMainInfo()
+            .enqueue(new Callback<List<AlbumMainInfo>>() {
                 @Override
-                public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
+                public void onResponse(Call<List<AlbumMainInfo>> call, Response<List<AlbumMainInfo>> response) {
                     if (isDetached) return;
                     albums = response.body();
                 }
 
                 @Override
-                public void onFailure(Call<List<Album>> call, Throwable t) {
+                public void onFailure(Call<List<AlbumMainInfo>> call, Throwable t) {
                     if (isDetached) return;
                     Log.d("ERROR", Objects.requireNonNull(t.getMessage()));
                 }
