@@ -7,5 +7,6 @@
     <color name="cod_gray">#131313</color>
     <color name="mine_shaft">#202020</color>
     <color name="scorpion">#595959</color>
+    <color name="dusty_gray">#979797</color>
     <color name="backgroundColor">@color/cod_gray</color>
 </resources>
