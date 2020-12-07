@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/username_til"
+        android:id="@+id/username_il"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -30,13 +30,14 @@
         app:layout_constraintTop_toBottomOf="@+id/login_tv">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_til"
+        android:id="@+id/password_il"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -47,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/username_til">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
@@ -65,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/password_til" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -84,7 +86,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton">
+        app:layout_constraintTop_toBottomOf="@+id/login_button">
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,6 +96,7 @@
             android:textColor="@color/scorpion" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/register_button"
             style="@style/Custom.Button.TextOnly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
