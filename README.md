@@ -2,7 +2,7 @@
 
 Soulbeats is a music streaming platform, just like Spotify, Apple Music. It is a demo project for a DBMS course, so the project is quite raw. The main goal was to connect the database to the user interface.
 
-P.S. If you are going to use the project's code for production, please note that there are security problems. For example, with the `GET /users` query, you can get data from all users, even if you are not on the system and do not have administrator rights.
+P.S. If you are going to use the project's code for production, please note that there are security issues. For example, passwords are not encrypted and with the `GET /users` query, you can get all users' data with non-encrypted passwords, even if you are not in the system and do not have administrator rights.
 
 ## 🛠 Tech stack
 
@@ -25,4 +25,29 @@ The project uses as few and as simple things as possible:
 
 ## 🔮 Installation
 
-> In progress...
+I am lazy, so no docker ¯\\_(ツ)\_/¯
+
+1. Clone the repo
+    ```sh
+    $ git clone https://github.com/truebeliever17/soulbeats.git
+    $ cd soulbeats
+    ```
+
+2. Run `db_create_table.sql` in your database
+
+3. Create .env file in the root directory and replace values below with your configs:
+    ```
+    PORT=5000
+    DB_USER=example_user
+    DB_PASSWORD=example_user_password
+    DB_HOST=localhost
+    DB_DATABASE=example_db
+    SECRET_KEY=example
+    ```
+
+4. Install all dependencies and start the server
+    ```sh
+    $ cd backend
+    $ npm install
+    $ node index.js
+    ```
