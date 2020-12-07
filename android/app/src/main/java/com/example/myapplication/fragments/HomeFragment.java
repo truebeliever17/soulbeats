@@ -71,12 +71,14 @@ public class HomeFragment extends Fragment {
                     User user = response.body();
                     assert user != null;
                     username = user.getDisplayName().trim().split(" ")[0];
+                    if (isDetached) return;
                     setUsername(view, username);
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                if (isDetached) return;
                 Log.d("ERROR", Objects.requireNonNull(t.getMessage()));
             }
         });
@@ -96,8 +98,8 @@ public class HomeFragment extends Fragment {
             .enqueue(new Callback<List<AlbumMainInfo>>() {
                 @Override
                 public void onResponse(Call<List<AlbumMainInfo>> call, Response<List<AlbumMainInfo>> response) {
-                    if (isDetached) return;
                     albums = response.body();
+                    if (isDetached) return;
                     configureAlbumsRecycler();
                 }
 
