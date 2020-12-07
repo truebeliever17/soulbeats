@@ -196,7 +196,7 @@ router.get("/me", auth, async (req, res) => {
                             message: "Token not found",
                         });
                     }
-                    res.status(200).json(response.recordset);
+                    res.status(200).json(response.recordset[0]);
                 }
             );
     } catch (err) {
