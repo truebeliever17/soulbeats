@@ -45,7 +45,7 @@
         android:layout_marginStart="@dimen/margin_default"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/margin_default"
-        android:backgroundTint="@color/temp"
+        android:backgroundTint="@color/tall_poppy"
         android:paddingVertical="14dp"
         android:text="@string/log_out"
         android:textColor="@color/white"
