@@ -5,4 +5,8 @@
     <string name="profile">Profile</string>
     <string name="albums">Albums</string>
     <string name="album_cover">Album cover</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
 </resources>
