@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
                         message: "Some internal error happened",
                     });
                 }
-                res.response(200).json(response.recordset);
+                res.status(200).json(response.recordset);
             });
     } catch (err) {
         res.status(500);
