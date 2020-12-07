@@ -5,6 +5,7 @@ import com.example.myapplication.models.AlbumMainInfo;
 import com.example.myapplication.models.AlbumRequest;
 import com.example.myapplication.models.LoginRequest;
 import com.example.myapplication.models.LoginResponse;
+import com.example.myapplication.models.RegisterRequest;
 import com.example.myapplication.models.User;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface SoulbeatsApi {
     @POST("/users/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
+    @POST("/users/signup")
+    Call <LoginResponse> register(@Body RegisterRequest registerRequest);
 }
