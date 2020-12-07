@@ -1,11 +1,13 @@
 package com.example.myapplication.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activities.LoginActivity;
+import com.example.myapplication.activities.MainActivity;
 import com.example.myapplication.adapters.AlbumsAdapter;
 import com.example.myapplication.models.AlbumMainInfo;
 import com.example.myapplication.models.AlbumRequest;
@@ -47,12 +51,31 @@ public class ProfileFragment extends Fragment {
             setUserDetails(view, user);
         }
 
+        createOnLogoutListener(view);
+
         if (albums == null) {
             fetchAlbums();
         } else {
             configureAlbumsRecycler();
         }
         return view;
+    }
+
+    private void createOnLogoutListener(View view) {
+        Button button = view.findViewById(R.id.logout_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SessionManager.removeToken(context);
+                makeIntent(LoginActivity.class);
+            }
+        });
+    }
+
+    private void makeIntent(Class<?> destinationClass) {
+        Intent intent = new Intent(context, destinationClass);
+        startActivity(intent);
+        getActivity().finishAffinity();
     }
 
     private void fetchUser(View view) {
