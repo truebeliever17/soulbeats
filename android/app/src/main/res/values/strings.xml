@@ -11,4 +11,6 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="dont_have_account">Don\'t have an account?</string>
     <string name="register_now">Register Now</string>
+    <string name="field_is_required">This field is required!</string>
+    <string name="login_password_incorrect">Login or password is incorrect!</string>
 </resources>
