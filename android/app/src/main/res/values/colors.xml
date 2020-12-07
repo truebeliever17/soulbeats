@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#3A13CA</color>
     <color name="colorPrimaryDark">@color/backgroundColor</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#FFFFFF</color>
@@ -8,5 +8,9 @@
     <color name="mine_shaft">#202020</color>
     <color name="scorpion">#595959</color>
     <color name="dusty_gray">#979797</color>
+    <color name="acadia">#2C2C2C</color>
+    <color name="dove_gray">#6E6E6E</color>
+    <color name="gray">#7E7E7E</color>
+    <color name="boulder">#777777</color>
     <color name="backgroundColor">@color/cod_gray</color>
 </resources>
