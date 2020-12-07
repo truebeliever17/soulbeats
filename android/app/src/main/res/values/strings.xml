@@ -19,4 +19,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="register">Register</string>
     <string name="already_have_account">Already have an account?</string>
+    <string name="passwords_not_match">Passwords do not match!</string>
+    <string name="username_or_email_already_taken">Username or email is already taken!</string>
 </resources>
