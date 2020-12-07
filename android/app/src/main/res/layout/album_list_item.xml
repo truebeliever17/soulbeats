@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:textColor="@color/temp"
+        android:textColor="@color/dusty_gray"
         android:textSize="@dimen/font_semi_large"
         android:fontFamily="@font/sf_pro_semibold"
         android:ellipsize="end"
