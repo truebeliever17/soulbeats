@@ -3,6 +3,8 @@ package com.example.myapplication.network;
 import com.example.myapplication.models.Album;
 import com.example.myapplication.models.AlbumMainInfo;
 import com.example.myapplication.models.AlbumRequest;
+import com.example.myapplication.models.LoginRequest;
+import com.example.myapplication.models.LoginResponse;
 import com.example.myapplication.models.User;
 
 import java.util.List;
@@ -22,4 +24,8 @@ public interface SoulbeatsApi {
 
     @GET("/users/me")
     Call<User> getUserByToken(@Header("token") String token);
+
+    @POST("/users/login")
+    Call<LoginResponse> login(@Body LoginRequest loginRequest);
+
 }
