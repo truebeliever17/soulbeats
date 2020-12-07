@@ -23,6 +23,9 @@ public interface SoulbeatsApi {
     @POST("/albums")
     Call<List<AlbumMainInfo>> getAlbumsWithMainInfo(@Body AlbumRequest albumRequest);
 
+    @GET("/albums/my")
+    Call<List<AlbumMainInfo>> getUserAlbumsByToken(@Header("token") String token);
+
     @GET("/users/me")
     Call<User> getUserByToken(@Header("token") String token);
 
