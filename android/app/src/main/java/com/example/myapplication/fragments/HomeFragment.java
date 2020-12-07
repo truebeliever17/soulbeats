@@ -19,6 +19,7 @@ import com.example.myapplication.models.Album;
 import com.example.myapplication.models.AlbumMainInfo;
 import com.example.myapplication.models.AlbumRequest;
 import com.example.myapplication.network.NetworkService;
+import com.example.myapplication.network.SessionManager;
 
 import java.util.List;
 import java.util.Objects;
