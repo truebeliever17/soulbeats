@@ -11,16 +11,14 @@ P.S. If you are going to use the project's code for production, please note that
 The project uses as few and as simple things as possible:
 
 - [Node.js](https://nodejs.org/) – Server-side, API
-
     - [express](https://expressjs.com/) – Network stuff
-    - [mssql](https://www.npmjs.com/package/mssql) – Connect/manage database
+    - [mssql](https://www.npmjs.com/package/mssql) – Connect and manage database
     - [express-validator](https://express-validator.github.io/docs/) – Validate fields
-    - [dotenv](https://github.com/motdotla/dotenv) – Storing/loading environment variables
+    - [dotenv](https://github.com/motdotla/dotenv) – Store and load environment variables
     - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) – Tokens
 
 - [Android](https://developer.android.com/) – Client-side, Mobile
-
-    - [Retrofit](https://square.github.io/retrofit/) – Making requests
+    - [Retrofit](https://square.github.io/retrofit/) – Make requests
     - [Material Design](https://material.io/develop/android) – UI components
 
 - [vas3k.club](https://github.com/vas3k/vas3k.club) – Markdown Template
